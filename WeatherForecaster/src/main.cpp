@@ -15,9 +15,13 @@ void setup()
 
     GUI_Init();
     setup_ui(&guider_ui);
+    xTaskCreate(GUI_Run, "GUI_Task", 4096, NULL, 2, NULL);
+
+    vTaskStartScheduler();
 }
 
 void loop()
 {
-    GUI_Run(nullptr);
+    Serial.println("This is Loop");
+    delay(100);
 }
