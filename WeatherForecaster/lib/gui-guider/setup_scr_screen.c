@@ -17,7 +17,7 @@ void setup_scr_screen(lv_ui *ui){
 
 	//Write codes screen_label_1
 	ui->screen_label_1 = lv_label_create(ui->screen, NULL);
-	lv_label_set_text(ui->screen_label_1, "HelloWorld");
+	lv_label_set_text(ui->screen_label_1, "天气状况");
 	lv_label_set_long_mode(ui->screen_label_1, LV_LABEL_LONG_BREAK);
 	lv_label_set_align(ui->screen_label_1, LV_LABEL_ALIGN_CENTER);
 
@@ -39,12 +39,12 @@ void setup_scr_screen(lv_ui *ui){
 	lv_style_set_pad_top(&style_screen_label_1_main, LV_STATE_DEFAULT, 0);
 	lv_style_set_pad_bottom(&style_screen_label_1_main, LV_STATE_DEFAULT, 0);
 	lv_obj_add_style(ui->screen_label_1, LV_LABEL_PART_MAIN, &style_screen_label_1_main);
-	lv_obj_set_pos(ui->screen_label_1, 112, 80);
+	lv_obj_set_pos(ui->screen_label_1, 20, 20);
 	lv_obj_set_size(ui->screen_label_1, 100, 0);
 
 	//Write codes screen_label_2
 	ui->screen_label_2 = lv_label_create(ui->screen, NULL);
-	lv_label_set_text(ui->screen_label_2, "你好世界");
+	lv_label_set_text(ui->screen_label_2, "温度");
 	lv_label_set_long_mode(ui->screen_label_2, LV_LABEL_LONG_BREAK);
 	lv_label_set_align(ui->screen_label_2, LV_LABEL_ALIGN_CENTER);
 
@@ -66,6 +66,195 @@ void setup_scr_screen(lv_ui *ui){
 	lv_style_set_pad_top(&style_screen_label_2_main, LV_STATE_DEFAULT, 0);
 	lv_style_set_pad_bottom(&style_screen_label_2_main, LV_STATE_DEFAULT, 0);
 	lv_obj_add_style(ui->screen_label_2, LV_LABEL_PART_MAIN, &style_screen_label_2_main);
-	lv_obj_set_pos(ui->screen_label_2, 117, 118);
-	lv_obj_set_size(ui->screen_label_2, 100, 0);
+	lv_obj_set_pos(ui->screen_label_2, 20, 55);
+	lv_obj_set_size(ui->screen_label_2, 68, 0);
+
+	//Write codes screen_label_3
+	ui->screen_label_3 = lv_label_create(ui->screen, NULL);
+	lv_label_set_text(ui->screen_label_3, "default");
+	lv_label_set_long_mode(ui->screen_label_3, LV_LABEL_LONG_BREAK);
+	lv_label_set_align(ui->screen_label_3, LV_LABEL_ALIGN_CENTER);
+
+	//Write style LV_LABEL_PART_MAIN for screen_label_3
+	static lv_style_t style_screen_label_3_main;
+	lv_style_reset(&style_screen_label_3_main);
+
+	//Write style state: LV_STATE_DEFAULT for style_screen_label_3_main
+	lv_style_set_radius(&style_screen_label_3_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_bg_color(&style_screen_label_3_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_color(&style_screen_label_3_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_dir(&style_screen_label_3_main, LV_STATE_DEFAULT, LV_GRAD_DIR_VER);
+	lv_style_set_bg_opa(&style_screen_label_3_main, LV_STATE_DEFAULT, 255);
+	lv_style_set_text_color(&style_screen_label_3_main, LV_STATE_DEFAULT, lv_color_make(0x00, 0x00, 0x00));
+	lv_style_set_text_font(&style_screen_label_3_main, LV_STATE_DEFAULT, &lv_font_simsun_12);
+	lv_style_set_text_letter_space(&style_screen_label_3_main, LV_STATE_DEFAULT, 2);
+	lv_style_set_pad_left(&style_screen_label_3_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_right(&style_screen_label_3_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_top(&style_screen_label_3_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_bottom(&style_screen_label_3_main, LV_STATE_DEFAULT, 0);
+	lv_obj_add_style(ui->screen_label_3, LV_LABEL_PART_MAIN, &style_screen_label_3_main);
+	lv_obj_set_pos(ui->screen_label_3, 185, 20);
+	lv_obj_set_size(ui->screen_label_3, 100, 0);
+
+	//Write codes screen_temp_label
+	ui->screen_temp_label = lv_label_create(ui->screen, NULL);
+	lv_label_set_text(ui->screen_temp_label, "25");
+	lv_label_set_long_mode(ui->screen_temp_label, LV_LABEL_LONG_BREAK);
+	lv_label_set_align(ui->screen_temp_label, LV_LABEL_ALIGN_CENTER);
+
+	//Write style LV_LABEL_PART_MAIN for screen_temp_label
+	static lv_style_t style_screen_temp_label_main;
+	lv_style_reset(&style_screen_temp_label_main);
+
+	//Write style state: LV_STATE_DEFAULT for style_screen_temp_label_main
+	lv_style_set_radius(&style_screen_temp_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_bg_color(&style_screen_temp_label_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_color(&style_screen_temp_label_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_dir(&style_screen_temp_label_main, LV_STATE_DEFAULT, LV_GRAD_DIR_VER);
+	lv_style_set_bg_opa(&style_screen_temp_label_main, LV_STATE_DEFAULT, 255);
+	lv_style_set_text_color(&style_screen_temp_label_main, LV_STATE_DEFAULT, lv_color_make(0x00, 0x00, 0x00));
+	lv_style_set_text_font(&style_screen_temp_label_main, LV_STATE_DEFAULT, &lv_font_simsun_12);
+	lv_style_set_text_letter_space(&style_screen_temp_label_main, LV_STATE_DEFAULT, 2);
+	lv_style_set_pad_left(&style_screen_temp_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_right(&style_screen_temp_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_top(&style_screen_temp_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_bottom(&style_screen_temp_label_main, LV_STATE_DEFAULT, 0);
+	lv_obj_add_style(ui->screen_temp_label, LV_LABEL_PART_MAIN, &style_screen_temp_label_main);
+	lv_obj_set_pos(ui->screen_temp_label, 100, 55);
+	lv_obj_set_size(ui->screen_temp_label, 50, 0);
+
+	//Write codes screen_label_5
+	ui->screen_label_5 = lv_label_create(ui->screen, NULL);
+	lv_label_set_text(ui->screen_label_5, "湿度");
+	lv_label_set_long_mode(ui->screen_label_5, LV_LABEL_LONG_BREAK);
+	lv_label_set_align(ui->screen_label_5, LV_LABEL_ALIGN_CENTER);
+
+	//Write style LV_LABEL_PART_MAIN for screen_label_5
+	static lv_style_t style_screen_label_5_main;
+	lv_style_reset(&style_screen_label_5_main);
+
+	//Write style state: LV_STATE_DEFAULT for style_screen_label_5_main
+	lv_style_set_radius(&style_screen_label_5_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_bg_color(&style_screen_label_5_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_color(&style_screen_label_5_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_dir(&style_screen_label_5_main, LV_STATE_DEFAULT, LV_GRAD_DIR_VER);
+	lv_style_set_bg_opa(&style_screen_label_5_main, LV_STATE_DEFAULT, 255);
+	lv_style_set_text_color(&style_screen_label_5_main, LV_STATE_DEFAULT, lv_color_make(0x00, 0x00, 0x00));
+	lv_style_set_text_font(&style_screen_label_5_main, LV_STATE_DEFAULT, &lv_font_simsun_12);
+	lv_style_set_text_letter_space(&style_screen_label_5_main, LV_STATE_DEFAULT, 2);
+	lv_style_set_pad_left(&style_screen_label_5_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_right(&style_screen_label_5_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_top(&style_screen_label_5_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_bottom(&style_screen_label_5_main, LV_STATE_DEFAULT, 0);
+	lv_obj_add_style(ui->screen_label_5, LV_LABEL_PART_MAIN, &style_screen_label_5_main);
+	lv_obj_set_pos(ui->screen_label_5, 185, 55);
+	lv_obj_set_size(ui->screen_label_5, 56, 0);
+
+	//Write codes screen_humi_label
+	ui->screen_humi_label = lv_label_create(ui->screen, NULL);
+	lv_label_set_text(ui->screen_humi_label, "50");
+	lv_label_set_long_mode(ui->screen_humi_label, LV_LABEL_LONG_BREAK);
+	lv_label_set_align(ui->screen_humi_label, LV_LABEL_ALIGN_CENTER);
+
+	//Write style LV_LABEL_PART_MAIN for screen_humi_label
+	static lv_style_t style_screen_humi_label_main;
+	lv_style_reset(&style_screen_humi_label_main);
+
+	//Write style state: LV_STATE_DEFAULT for style_screen_humi_label_main
+	lv_style_set_radius(&style_screen_humi_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_bg_color(&style_screen_humi_label_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_color(&style_screen_humi_label_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_dir(&style_screen_humi_label_main, LV_STATE_DEFAULT, LV_GRAD_DIR_VER);
+	lv_style_set_bg_opa(&style_screen_humi_label_main, LV_STATE_DEFAULT, 255);
+	lv_style_set_text_color(&style_screen_humi_label_main, LV_STATE_DEFAULT, lv_color_make(0x00, 0x00, 0x00));
+	lv_style_set_text_font(&style_screen_humi_label_main, LV_STATE_DEFAULT, &lv_font_simsun_12);
+	lv_style_set_text_letter_space(&style_screen_humi_label_main, LV_STATE_DEFAULT, 2);
+	lv_style_set_pad_left(&style_screen_humi_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_right(&style_screen_humi_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_top(&style_screen_humi_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_bottom(&style_screen_humi_label_main, LV_STATE_DEFAULT, 0);
+	lv_obj_add_style(ui->screen_humi_label, LV_LABEL_PART_MAIN, &style_screen_humi_label_main);
+	lv_obj_set_pos(ui->screen_humi_label, 250, 54);
+	lv_obj_set_size(ui->screen_humi_label, 45, 0);
+
+	//Write codes screen_label_6
+	ui->screen_label_6 = lv_label_create(ui->screen, NULL);
+	lv_label_set_text(ui->screen_label_6, "空气质量");
+	lv_label_set_long_mode(ui->screen_label_6, LV_LABEL_LONG_BREAK);
+	lv_label_set_align(ui->screen_label_6, LV_LABEL_ALIGN_CENTER);
+
+	//Write style LV_LABEL_PART_MAIN for screen_label_6
+	static lv_style_t style_screen_label_6_main;
+	lv_style_reset(&style_screen_label_6_main);
+
+	//Write style state: LV_STATE_DEFAULT for style_screen_label_6_main
+	lv_style_set_radius(&style_screen_label_6_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_bg_color(&style_screen_label_6_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_color(&style_screen_label_6_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_dir(&style_screen_label_6_main, LV_STATE_DEFAULT, LV_GRAD_DIR_VER);
+	lv_style_set_bg_opa(&style_screen_label_6_main, LV_STATE_DEFAULT, 255);
+	lv_style_set_text_color(&style_screen_label_6_main, LV_STATE_DEFAULT, lv_color_make(0x00, 0x00, 0x00));
+	lv_style_set_text_font(&style_screen_label_6_main, LV_STATE_DEFAULT, &lv_font_simsun_12);
+	lv_style_set_text_letter_space(&style_screen_label_6_main, LV_STATE_DEFAULT, 2);
+	lv_style_set_pad_left(&style_screen_label_6_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_right(&style_screen_label_6_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_top(&style_screen_label_6_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_bottom(&style_screen_label_6_main, LV_STATE_DEFAULT, 0);
+	lv_obj_add_style(ui->screen_label_6, LV_LABEL_PART_MAIN, &style_screen_label_6_main);
+	lv_obj_set_pos(ui->screen_label_6, 20, 90);
+	lv_obj_set_size(ui->screen_label_6, 100, 0);
+
+	//Write codes screen_air_label
+	ui->screen_air_label = lv_label_create(ui->screen, NULL);
+	lv_label_set_text(ui->screen_air_label, "100");
+	lv_label_set_long_mode(ui->screen_air_label, LV_LABEL_LONG_BREAK);
+	lv_label_set_align(ui->screen_air_label, LV_LABEL_ALIGN_CENTER);
+
+	//Write style LV_LABEL_PART_MAIN for screen_air_label
+	static lv_style_t style_screen_air_label_main;
+	lv_style_reset(&style_screen_air_label_main);
+
+	//Write style state: LV_STATE_DEFAULT for style_screen_air_label_main
+	lv_style_set_radius(&style_screen_air_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_bg_color(&style_screen_air_label_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_color(&style_screen_air_label_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_dir(&style_screen_air_label_main, LV_STATE_DEFAULT, LV_GRAD_DIR_VER);
+	lv_style_set_bg_opa(&style_screen_air_label_main, LV_STATE_DEFAULT, 255);
+	lv_style_set_text_color(&style_screen_air_label_main, LV_STATE_DEFAULT, lv_color_make(0x00, 0x00, 0x00));
+	lv_style_set_text_font(&style_screen_air_label_main, LV_STATE_DEFAULT, &lv_font_simsun_12);
+	lv_style_set_text_letter_space(&style_screen_air_label_main, LV_STATE_DEFAULT, 2);
+	lv_style_set_pad_left(&style_screen_air_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_right(&style_screen_air_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_top(&style_screen_air_label_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_bottom(&style_screen_air_label_main, LV_STATE_DEFAULT, 0);
+	lv_obj_add_style(ui->screen_air_label, LV_LABEL_PART_MAIN, &style_screen_air_label_main);
+	lv_obj_set_pos(ui->screen_air_label, 185, 90);
+	lv_obj_set_size(ui->screen_air_label, 100, 0);
+
+	//Write codes screen_label_7
+	ui->screen_label_7 = lv_label_create(ui->screen, NULL);
+	lv_label_set_text(ui->screen_label_7, "未来天气");
+	lv_label_set_long_mode(ui->screen_label_7, LV_LABEL_LONG_BREAK);
+	lv_label_set_align(ui->screen_label_7, LV_LABEL_ALIGN_CENTER);
+
+	//Write style LV_LABEL_PART_MAIN for screen_label_7
+	static lv_style_t style_screen_label_7_main;
+	lv_style_reset(&style_screen_label_7_main);
+
+	//Write style state: LV_STATE_DEFAULT for style_screen_label_7_main
+	lv_style_set_radius(&style_screen_label_7_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_bg_color(&style_screen_label_7_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_color(&style_screen_label_7_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_bg_grad_dir(&style_screen_label_7_main, LV_STATE_DEFAULT, LV_GRAD_DIR_VER);
+	lv_style_set_bg_opa(&style_screen_label_7_main, LV_STATE_DEFAULT, 255);
+	lv_style_set_text_color(&style_screen_label_7_main, LV_STATE_DEFAULT, lv_color_make(0x00, 0x00, 0x00));
+	lv_style_set_text_font(&style_screen_label_7_main, LV_STATE_DEFAULT, &lv_font_simsun_12);
+	lv_style_set_text_letter_space(&style_screen_label_7_main, LV_STATE_DEFAULT, 2);
+	lv_style_set_pad_left(&style_screen_label_7_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_right(&style_screen_label_7_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_top(&style_screen_label_7_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_pad_bottom(&style_screen_label_7_main, LV_STATE_DEFAULT, 0);
+	lv_obj_add_style(ui->screen_label_7, LV_LABEL_PART_MAIN, &style_screen_label_7_main);
+	lv_obj_set_pos(ui->screen_label_7, 20, 130);
+	lv_obj_set_size(ui->screen_label_7, 100, 0);
 }

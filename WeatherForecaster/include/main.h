@@ -1,4 +1,4 @@
 #pragma once
 
 #include "Arduino.h"
-#include "FreeRTOS.h"
+#include <Seeed_Arduino_FreeRTOS.h>
