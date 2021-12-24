@@ -273,7 +273,7 @@
 					"default_style": false
 				},
 				{
-					"name": "label_3",
+					"name": "skycon_label",
 					"type": "label",
 					"left": 185,
 					"top": 20,
@@ -1136,7 +1136,7 @@
 						]
 					},
 					{
-						"name": "screen_label_3",
+						"name": "screen_skycon_label",
 						"type": "label",
 						"pos": [
 							185,

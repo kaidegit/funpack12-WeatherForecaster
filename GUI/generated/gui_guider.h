@@ -19,7 +19,7 @@ typedef struct
 	lv_obj_t *screen;
 	lv_obj_t *screen_label_1;
 	lv_obj_t *screen_label_2;
-	lv_obj_t *screen_label_3;
+	lv_obj_t *screen_skycon_label;
 	lv_obj_t *screen_temp_label;
 	lv_obj_t *screen_label_5;
 	lv_obj_t *screen_humi_label;
