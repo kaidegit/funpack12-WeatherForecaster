@@ -36,6 +36,7 @@ void setup()
 
     location temp = GetLocationByIP();
     GetWeather(temp);
+    GetForecast(temp);
     // Serial.printf("%f %f\n", temp.lat, temp.lon);
 
     // vTaskStartScheduler();
