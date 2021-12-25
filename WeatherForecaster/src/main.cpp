@@ -6,6 +6,13 @@
 #include "weather.h"
 
 lv_ui guider_ui;
+bool refresh_flag;
+
+void btn_callback()
+{
+    Serial.printf("This is Btn Callback\n");
+    refresh_flag = true;
+}
 
 void setup()
 {
@@ -17,11 +24,11 @@ void setup()
 
     vNopDelayMS(1000);
 
-    pinMode(WIO_KEY_A, INPUT_PULLUP);
-    pinMode(WIO_KEY_B, INPUT_PULLUP);
     pinMode(WIO_KEY_C, INPUT_PULLUP);
+    attachInterrupt(WIO_KEY_C, btn_callback, FALLING);
+    refresh_flag = false;
 
-    Net_Init();
+    Network_Init();
 
     if (WiFi.status() == WL_CONNECTED)
     {
@@ -34,9 +41,8 @@ void setup()
             ;
     }
 
-    location temp = GetLocationByIP();
-    GetWeather(temp);
-    GetForecast(temp);
+    RefreshWeather();
+
     // Serial.printf("%f %f\n", temp.lat, temp.lon);
 
     // vTaskStartScheduler();
@@ -46,5 +52,19 @@ void loop()
 {
     // Serial.printf("This is Loop\n");
     // GUI_Run(nullptr);
-    delay(10);
+    // delay(10);
+
+    //延时1s*60*60=1h
+    for (uint8_t i = 0; i < 60; i++)
+    {
+        for (uint8_t j = 0; j < 60; j++)
+        {
+            delay(1000);
+            if (refresh_flag){
+                RefreshWeather();
+                refresh_flag = false;
+            }
+        }
+    }
+    RefreshWeather();
 }

@@ -38,6 +38,7 @@ typedef struct
 	lv_obj_t *screen_third_temper_label;
 	lv_obj_t *screen_third_air_label;
 	lv_obj_t *screen_third_skycon_label;
+	lv_obj_t *screen_update_state;
 	lv_obj_t *fail;
 	lv_obj_t *fail_label_1;
 	lv_obj_t *fail_label_2;

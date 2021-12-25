@@ -47,6 +47,8 @@ void GetWeather(location loca);
 
 void GetForecast(location loca);
 
+void RefreshWeather();
+
 class String2Enum
 {
     std::map<String, weatherState> enumMap;

@@ -1,7 +1,7 @@
 #include "network.h"
 #include "wifiInfo.h"
 
-void Net_Init()
+void Network_Init()
 {
     uint8_t retry = 0;
     WiFi.mode(WIFI_STA);

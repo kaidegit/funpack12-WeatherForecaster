@@ -175,3 +175,12 @@ void GetForecast(location loca)
 
     http.end();
 }
+
+void RefreshWeather()
+{
+    lv_label_set_text(guider_ui.screen_update_state, "updating...");
+    location temp = GetLocationByIP();
+    GetWeather(temp);
+    GetForecast(temp);
+    lv_label_set_text(guider_ui.screen_update_state, "updated");
+}

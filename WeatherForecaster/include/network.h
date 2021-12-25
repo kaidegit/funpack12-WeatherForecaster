@@ -3,4 +3,4 @@
 #include "main.h"
 #include "rpcWiFi.h"
 
-void Net_Init();
+void Network_Init();
