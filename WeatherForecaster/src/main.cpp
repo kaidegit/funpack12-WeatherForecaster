@@ -10,7 +10,7 @@ bool refresh_flag;
 
 void btn_callback()
 {
-    Serial.printf("This is Btn Callback\n");
+    // Serial.printf("This is Btn Callback\n");
     refresh_flag = true;
 }
 
@@ -23,10 +23,6 @@ void setup()
     xTaskCreate(GUI_Run, "GUI_Task", 4096, NULL, 2, NULL);
 
     vNopDelayMS(1000);
-
-    pinMode(WIO_KEY_C, INPUT_PULLUP);
-    attachInterrupt(WIO_KEY_C, btn_callback, FALLING);
-    refresh_flag = false;
 
     Network_Init();
 
@@ -42,6 +38,10 @@ void setup()
     }
 
     RefreshWeather();
+
+    pinMode(WIO_KEY_C, INPUT_PULLUP);
+    attachInterrupt(WIO_KEY_C, btn_callback, FALLING);
+    refresh_flag = false;
 
     // Serial.printf("%f %f\n", temp.lat, temp.lon);
 
@@ -60,7 +60,10 @@ void loop()
         for (uint8_t j = 0; j < 60; j++)
         {
             delay(1000);
-            if (refresh_flag){
+            if (refresh_flag)
+            {
+                while (digitalRead(WIO_KEY_C) == LOW)
+                    ;
                 RefreshWeather();
                 refresh_flag = false;
             }
