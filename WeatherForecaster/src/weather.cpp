@@ -139,34 +139,43 @@ void GetForecast(location loca)
     Enum2CharArr parser2;
 
     dailyWeather weatherForecasr[3];
-    weatherForecasr[0].temperature_max = jsonBuffer["result"]["daily"]["temperature"][0]["max"];
-    weatherForecasr[0].temperature_min = jsonBuffer["result"]["daily"]["temperature"][0]["min"];
-    weatherForecasr[0].air = jsonBuffer["result"]["daily"]["air_quality"]["aqi"][0]["avg"]["chn"];
-    weatherForecasr[0].skycon = parser1.Parse(jsonBuffer["result"]["daily"]["skycon"][0]["value"]);
+    String fullDate0 = jsonBuffer["result"]["daily"]["temperature"][1]["date"];
+    weatherForecasr[0].date = fullDate0.substring(5, 10);
+    weatherForecasr[0].temperature_max = jsonBuffer["result"]["daily"]["temperature"][1]["max"];
+    weatherForecasr[0].temperature_min = jsonBuffer["result"]["daily"]["temperature"][1]["min"];
+    weatherForecasr[0].air = jsonBuffer["result"]["daily"]["air_quality"]["aqi"][1]["avg"]["chn"];
+    weatherForecasr[0].skycon = parser1.Parse(jsonBuffer["result"]["daily"]["skycon"][1]["value"]);
 
-    weatherForecasr[1].temperature_max = jsonBuffer["result"]["daily"]["temperature"][1]["max"];
-    weatherForecasr[1].temperature_min = jsonBuffer["result"]["daily"]["temperature"][1]["min"];
-    weatherForecasr[1].air = jsonBuffer["result"]["daily"]["air_quality"]["aqi"][1]["avg"]["chn"];
-    weatherForecasr[1].skycon = parser1.Parse(jsonBuffer["result"]["daily"]["skycon"][1]["value"]);
+    String fullDate1 = jsonBuffer["result"]["daily"]["temperature"][2]["date"];
+    weatherForecasr[1].date = fullDate1.substring(5, 10);
+    weatherForecasr[1].temperature_max = jsonBuffer["result"]["daily"]["temperature"][2]["max"];
+    weatherForecasr[1].temperature_min = jsonBuffer["result"]["daily"]["temperature"][2]["min"];
+    weatherForecasr[1].air = jsonBuffer["result"]["daily"]["air_quality"]["aqi"][2]["avg"]["chn"];
+    weatherForecasr[1].skycon = parser1.Parse(jsonBuffer["result"]["daily"]["skycon"][2]["value"]);
 
-    weatherForecasr[2].temperature_max = jsonBuffer["result"]["daily"]["temperature"][2]["max"];
-    weatherForecasr[2].temperature_min = jsonBuffer["result"]["daily"]["temperature"][2]["min"];
-    weatherForecasr[2].air = jsonBuffer["result"]["daily"]["air_quality"]["aqi"][2]["avg"]["chn"];
-    weatherForecasr[2].skycon = parser1.Parse(jsonBuffer["result"]["daily"]["skycon"][2]["value"]);
+    String fullDate2 = jsonBuffer["result"]["daily"]["temperature"][3]["date"];
+    weatherForecasr[2].date = fullDate2.substring(5, 10);
+    weatherForecasr[2].temperature_max = jsonBuffer["result"]["daily"]["temperature"][3]["max"];
+    weatherForecasr[2].temperature_min = jsonBuffer["result"]["daily"]["temperature"][3]["min"];
+    weatherForecasr[2].air = jsonBuffer["result"]["daily"]["air_quality"]["aqi"][3]["avg"]["chn"];
+    weatherForecasr[2].skycon = parser1.Parse(jsonBuffer["result"]["daily"]["skycon"][3]["value"]);
 
     char temp[15];
+    lv_label_set_text(guider_ui.screen_label_8, weatherForecasr[0].date.c_str());
     lv_label_set_text(guider_ui.screen_first_skycon_label, parser2.Parse(weatherForecasr[0].skycon));
     sprintf(temp, "%.1f-%.1f", weatherForecasr[0].temperature_min, weatherForecasr[0].temperature_max);
     lv_label_set_text(guider_ui.screen_first_temper_label, temp);
     sprintf(temp, "AQI:%d", weatherForecasr[0].air);
     lv_label_set_text(guider_ui.screen_first_air_label, temp);
 
+    lv_label_set_text(guider_ui.screen_label_12, weatherForecasr[1].date.c_str());
     lv_label_set_text(guider_ui.screen_second_skycon_label, parser2.Parse(weatherForecasr[1].skycon));
     sprintf(temp, "%.1f-%.1f", weatherForecasr[1].temperature_min, weatherForecasr[1].temperature_max);
     lv_label_set_text(guider_ui.screen_second_temper_label, temp);
     sprintf(temp, "AQI:%d", weatherForecasr[1].air);
     lv_label_set_text(guider_ui.screen_second_air_label, temp);
 
+    lv_label_set_text(guider_ui.screen_label_16, weatherForecasr[2].date.c_str());
     lv_label_set_text(guider_ui.screen_third_skycon_label, parser2.Parse(weatherForecasr[2].skycon));
     sprintf(temp, "%.1f-%.1f", weatherForecasr[2].temperature_min, weatherForecasr[2].temperature_max);
     lv_label_set_text(guider_ui.screen_third_temper_label, temp);
